@@ -1,6 +1,34 @@
-import "../style/FilterableRestaurantList.css";
 import RestaurantCard from "./RestaurantCard";
 import { CATEGORIES } from "../../data/categories";
+
+import styled from "styled-components";
+
+const RestaurantFilterContainer=styled.section`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin-top: 24px;
+`;
+
+const RestaurantFilterContainerSelect=styled.select`
+  height: 44px;
+  min-width: 125px;
+  cursor: pointer;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  background: transparent;
+
+  font-size: 16px;
+  padding: 8px;
+`;
+
+const RestaurantListContainer=styled.section`
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  margin: 16px 0;
+`;
+
 
 function FilterableRestaurantList({ category, onChangeCategory, restaurants, onOpenModal }) {
     return (
@@ -21,11 +49,10 @@ export default FilterableRestaurantList;
 
 function CatagoryFilter({ category, onChangeCategory }) {
     return (
-        <section className="restaurant-filter-container">
-            <select
+        <RestaurantFilterContainer>
+            <RestaurantFilterContainerSelect
                 name="category"
                 id="category-filter"
-                className="restaurant-filter"
                 aria-label="음식점 카테고리 필터"
                 value={category}
                 onChange={(event) => onChangeCategory(event.target.value)}
@@ -37,8 +64,8 @@ function CatagoryFilter({ category, onChangeCategory }) {
                         {category}
                     </option>
                 ))}
-            </select>
-        </section>
+            </RestaurantFilterContainerSelect>
+        </RestaurantFilterContainer>
     );
 }
 
@@ -54,7 +81,7 @@ function RestaurantList({ restaurants, onOpenModal }) {
 
     return (
 
-        <section className="restaurant-list-container">
+        <RestaurantListContainer>
             <ul className="restaurant-list">
                 {restaurants.map((restaurant) => (
                     <RestaurantCard
@@ -65,7 +92,7 @@ function RestaurantList({ restaurants, onOpenModal }) {
                     />
                 ))}
             </ul>
-        </section>
+        </RestaurantListContainer>
 
     );
 }
