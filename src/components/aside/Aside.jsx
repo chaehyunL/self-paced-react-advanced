@@ -1,4 +1,3 @@
-import "../style/Aside.css";
 import AddRestaurantModal from "./AddRestaurantModal";
 import RestaurantDetailModal from "./RestaurantDetailModal";
 
