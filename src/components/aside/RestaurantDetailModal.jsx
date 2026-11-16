@@ -1,5 +1,5 @@
 import Modal from "../modal/Modal";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const ModalTitle=styled.h2`
   margin-bottom: 36px;
@@ -13,8 +13,7 @@ const ButtonContainer=styled.div`
   display: flex;
 `;
 
-
-const ButtonItem=styled.button`
+const ButtonField=css`
   width: 100%;
   height: 44px;
 
@@ -25,22 +24,17 @@ const ButtonItem=styled.button`
 
   font-weight: 600;
   cursor: pointer;
+`;
+
+const ButtonItem=styled.button`
+  ${ButtonField}
 
   &:last-child {
     margin-right: 0;
   }
 `;
 const PrimaryButton=styled.button`
-  width: 100%;
-  height: 44px;
-
-  margin-right: 16px;
-
-  border: none;
-  border-radius: 8px;
-
-  font-weight: 600;
-  cursor: pointer;
+  ${ButtonField}
 
   background: var(--primary-color);
 
@@ -48,16 +42,7 @@ const PrimaryButton=styled.button`
 `;
 
 const SecondaryButton=styled.button`
-  width: 100%;
-  height: 44px;
-
-  margin-right: 16px;
-
-  border: none;
-  border-radius: 8px;
-
-  font-weight: 600;
-  cursor: pointer;
+  ${ButtonField}
 
   border: 1px solid var(--grey-300);
   background: transparent;

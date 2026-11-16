@@ -34,7 +34,7 @@ const FormItemHelpText = styled.span`
   color: var(--grey-300);
 `;
 
-const FormItemInput = styled.input`
+const FieldStyle = css`
   padding: 8px;
   margin: 6px 0;
 
@@ -42,7 +42,9 @@ const FormItemInput = styled.input`
   border-radius: 8px;
 
   font-size: 16px;
-
+`;
+const FormItemInput = styled.input`
+  ${FieldStyle}
   &[name="name"],
   &[name="link"]{
     height: 44px;
@@ -50,26 +52,12 @@ const FormItemInput = styled.input`
 `;
 
 const FormItemTextArea = styled.textarea`
-  padding: 8px;
-  margin: 6px 0;
-
-  border: 1px solid var(--grey-200);
-  border-radius: 8px;
-
-  font-size: 16px;
-  
+  ${FieldStyle}
   resize: none;
 `;
 
 const FormItemSelect = styled.select`
-  padding: 8px;
-  margin: 6px 0;
-
-  border: 1px solid var(--grey-200);
-  border-radius: 8px;
-
-  font-size: 16px;
-
+  ${FieldStyle}
   height: 44px;
 
   padding: 8px;
