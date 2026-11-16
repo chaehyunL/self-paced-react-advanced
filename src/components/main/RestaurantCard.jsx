@@ -50,10 +50,6 @@ const RestaurantDescription=styled.p`
   -webkit-box-orient: vertical;
 `;
 
-const restaurantDistance=styled`
-  color: var(--primary-color);
-`;
-
 function RestaurantCard({ restaurant, onOpenModal, categoryImages }) {
     return (
         <RestaurantItem
