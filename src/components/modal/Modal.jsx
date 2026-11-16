@@ -14,6 +14,10 @@ const ModalBackDrop = styled.div`
   background: rgba(0, 0, 0, 0.35);
 `;
 
+const ModalTitle = styled.h2`
+    margin-bottom: 36px;
+
+`;
 const ModalContainer = styled.div`
   position: fixed;
   bottom: 0;
@@ -25,11 +29,12 @@ const ModalContainer = styled.div`
   background: var(--grey-100);
 `;
 
-function Modal({ onClose, children }) {
+function Modal({ onClose, title, children }) {
     return (
         <ModalWrapper>
             <ModalBackDrop onClick={onClose}></ModalBackDrop>
             <ModalContainer>
+                <ModalTitle>{title}</ModalTitle>
                 {children}
             </ModalContainer>
         </ModalWrapper>

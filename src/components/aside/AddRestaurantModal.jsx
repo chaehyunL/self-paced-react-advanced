@@ -3,10 +3,6 @@ import { useRef } from "react";
 import Modal from "../modal/Modal";
 import styled, { css } from "styled-components";
 
-const ModalTitle = styled.h2`
-  margin-bottom: 36px;
-`;
-
 const FormItem = styled.div`
   display: flex;
   flex-direction: column;
@@ -108,8 +104,7 @@ function AddRestaurantModal({ onCloseAddModal, onAddRestaurant }) {
   }
 
   return (
-    <Modal onClose={onCloseAddModal}>
-      <ModalTitle className="text-title">새로운 음식점</ModalTitle>
+    <Modal onClose={onCloseAddModal} title="새로운 음식점">
       <form onSubmit={handleSubmit}>
         <FormItem $required>
           <label htmlFor="category">카테고리</label>

@@ -1,10 +1,6 @@
 import Modal from "../modal/Modal";
 import styled, { css } from "styled-components";
 
-const ModalTitle=styled.h2`
-  margin-bottom: 36px;
-`;
-
 const RestaurantInfo=styled.div`
   margin-bottom: 24px;
 `;
@@ -52,8 +48,7 @@ const SecondaryButton=styled.button`
 
 function RestaurantDetailModal({ restaurant, onCloseModal }) {
   return (
-    <Modal onClose={onCloseModal}>
-      <ModalTitle className="text-title">{restaurant.name}</ModalTitle>
+    <Modal onClose={onCloseModal} title={restaurant.name}>
       <RestaurantInfo>
         <p className="restaurant-info__description text-body">{restaurant.description}</p>
       </RestaurantInfo>
