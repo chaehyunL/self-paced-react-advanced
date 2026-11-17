@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { textBody, textSubtitle } from "../typography";
 
 const RestaurantItem=styled.li`
   display: flex;
@@ -36,10 +37,12 @@ const RestaurantInfo=styled.div`
 `;
 
 const RestaurantName=styled.p`
+  ${textSubtitle}
   margin: 0;
 `;
 
 const RestaurantDescription=styled.p`
+  ${textBody}
   display: -webkit-box;
 
   padding-top: 8px;
@@ -63,10 +66,10 @@ function RestaurantCard({ restaurant, onOpenModal, categoryImages }) {
                 />
             </RestaurantCategoryItem>
             <RestaurantInfo>
-                <RestaurantName className="text-subtitle">
+                <RestaurantName>
                     {restaurant.name}
                 </RestaurantName>
-                <RestaurantDescription className="n text-body">
+                <RestaurantDescription>
                     {restaurant.description}
                 </RestaurantDescription>
             </RestaurantInfo>

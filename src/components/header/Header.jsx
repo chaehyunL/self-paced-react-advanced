@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { textTitle } from "../typography";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -12,6 +13,7 @@ const HeaderContainer = styled.header`
 `;
 
 const HeaderTitle = styled.h1`
+  ${textTitle}
   color: #fcfcfd;
 `;
 
@@ -46,7 +48,7 @@ export default Header;
 function Gnb({ onOpenAddModal }) {
   return (
     <HeaderContainer>
-      <HeaderTitle className="text-title">점심 뭐 먹지</HeaderTitle>
+      <HeaderTitle>점심 뭐 먹지</HeaderTitle>
       <AddButton type="button" aria-label="음식점 추가"
         onClick={onOpenAddModal}
       >

@@ -1,5 +1,6 @@
 import Modal from "../modal/Modal";
 import styled, { css } from "styled-components";
+import { textBody, textCaption } from "../typography";
 
 const RestaurantInfo=styled.div`
   margin-bottom: 24px;
@@ -32,6 +33,8 @@ const ButtonItem=styled.button`
 const PrimaryButton=styled.button`
   ${ButtonField}
 
+  ${textCaption}
+
   background: var(--primary-color);
 
   color: var(--grey-100);
@@ -46,14 +49,18 @@ const SecondaryButton=styled.button`
   color: var(--grey-300);
 `;
 
+const RestaurantInfoDescription=styled.p`
+  ${textBody}
+`;
+
 function RestaurantDetailModal({ restaurant, onCloseModal }) {
   return (
     <Modal onClose={onCloseModal} title={restaurant.name}>
       <RestaurantInfo>
-        <p className="restaurant-info__description text-body">{restaurant.description}</p>
+        <RestaurantInfoDescription>{restaurant.description}</RestaurantInfoDescription>
       </RestaurantInfo>
       <ButtonContainer>
-        <PrimaryButton className="text-caption"
+        <PrimaryButton
           onClick={onCloseModal}
         >닫기</PrimaryButton>
       </ButtonContainer>

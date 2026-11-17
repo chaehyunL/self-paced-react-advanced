@@ -2,6 +2,7 @@ import { CATEGORIES } from "../../data/categories";
 import { useRef } from "react";
 import Modal from "../modal/Modal";
 import styled, { css } from "styled-components";
+import { textCaption } from "../typography";
 
 const FormItem = styled.div`
   display: flex;
@@ -10,6 +11,7 @@ const FormItem = styled.div`
   margin-bottom: 36px;  
 
   label{
+    ${textCaption}
     color:var(--grey-400);
     font-size:14px;
   }
@@ -27,6 +29,7 @@ const FormItem = styled.div`
 `;
 
 const FormItemHelpText = styled.span`
+  ${textCaption}
   color: var(--grey-300);
 `;
 
@@ -69,6 +72,7 @@ const ButtonContainer = styled.div`
 `;
 
 const PrimaryButtonItem = styled.button`
+  ${textCaption}
   width: 100%;
   height: 44px;
 
@@ -118,16 +122,16 @@ function AddRestaurantModal({ onCloseAddModal, onAddRestaurant }) {
           </FormItemSelect>
         </FormItem>
         <FormItem $required>
-          <label htmlFor="name" className="text-caption">이름</label>
+          <label htmlFor="name" >이름</label>
           <FormItemInput type="text" name="name" id="name" ref={nameRef} required />
         </FormItem>
         <FormItem>
-          <label htmlFor="description" className="text-caption">설명</label>
+          <label htmlFor="description">설명</label>
           <FormItemTextArea name="description" id="description" ref={descriptionRef} cols="30" rows="5"></FormItemTextArea>
-          <FormItemHelpText className="text-caption">메뉴 등 추가 정보를 입력해 주세요.</FormItemHelpText>
+          <FormItemHelpText>메뉴 등 추가 정보를 입력해 주세요.</FormItemHelpText>
         </FormItem>
         <ButtonContainer>
-          <PrimaryButtonItem type="submit" className="text-caption">추가하기</PrimaryButtonItem>
+          <PrimaryButtonItem type="submit">추가하기</PrimaryButtonItem>
         </ButtonContainer>
       </form>
     </Modal>
