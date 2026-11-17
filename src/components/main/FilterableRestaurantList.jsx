@@ -82,7 +82,7 @@ function RestaurantList({ restaurants, onOpenModal }) {
     return (
 
         <RestaurantListContainer>
-            <ul className="restaurant-list">
+            <ul>
                 {restaurants.map((restaurant) => (
                     <RestaurantCard
                         key={restaurant.id}
