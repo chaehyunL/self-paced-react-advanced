@@ -6,8 +6,17 @@ import Aside from "./components/aside/Aside";
 import { RESTAURANTS } from "./data/restaurants";
 import { useState, useEffect } from "react";
 
+import {useSelector,useDispatch} from "react-redux";
+import { setCategory } from "./store/categorySlice";
+
 function App() {
-  const [category, setCategory] = useState("전체");
+  
+  const category =useSelector(
+    (state) =>state.category.selectedCategory
+  );
+
+  const dispatch =useDispatch();
+
   const [isRestaurantInfoModalOpen, setIsRestaurantInfoModalOpen] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -49,6 +58,10 @@ function App() {
       category === "전체" || restaurant.category === category
   );
 
+  function handleChangeCategory(newCategory){
+    dispatch(setCategory(newCategory));
+  }
+
   function handleOpenModal(restaurant) {
     setSelectedRestaurant(restaurant);
     setIsRestaurantInfoModalOpen(true);
@@ -73,8 +86,6 @@ function App() {
         onOpenAddModal={handleOpenAddModal}
       />
       <FilterableRestaurantList
-        category={category}
-        onChangeCategory={setCategory}
         restaurants={filteredRestaurants}
         onOpenModal={handleOpenModal}
       />

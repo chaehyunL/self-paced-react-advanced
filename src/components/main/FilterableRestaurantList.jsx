@@ -3,6 +3,9 @@ import { CATEGORIES } from "../../data/categories";
 
 import styled from "styled-components";
 
+import {useSelector, useDispatch} from "react-redux";
+import {setCategory} from "../../store/categorySlice";
+
 const RestaurantFilterContainer=styled.section`
   display: flex;
   justify-content: space-between;
@@ -30,13 +33,10 @@ const RestaurantListContainer=styled.section`
 `;
 
 
-function FilterableRestaurantList({ category, onChangeCategory, restaurants, onOpenModal }) {
+function FilterableRestaurantList({ restaurants, onOpenModal }) {
     return (
         <main>
-            <CatagoryFilter
-                category={category}
-                onChangeCategory={onChangeCategory}
-            />
+            <CatagoryFilter  />
             <RestaurantList
                 restaurants={restaurants}
                 onOpenModal={onOpenModal}
@@ -47,7 +47,17 @@ function FilterableRestaurantList({ category, onChangeCategory, restaurants, onO
 
 export default FilterableRestaurantList;
 
-function CatagoryFilter({ category, onChangeCategory }) {
+function CatagoryFilter() {
+    const category =useSelector(
+        (state)=>state.category.selectedCategory
+    );
+
+    const dispatch =useDispatch();
+
+    function handleChangeCategory(newCategory){
+        dispatch(setCategory(newCategory));
+    }
+
     return (
         <RestaurantFilterContainer>
             <RestaurantFilterContainerSelect
@@ -55,7 +65,8 @@ function CatagoryFilter({ category, onChangeCategory }) {
                 id="category-filter"
                 aria-label="음식점 카테고리 필터"
                 value={category}
-                onChange={(event) => onChangeCategory(event.target.value)}
+                onChange={(event) =>
+                    handleChangeCategory(event.target.value)}
             >
                 <option value="전체">전체</option>
 
@@ -80,7 +91,6 @@ function RestaurantList({ restaurants, onOpenModal }) {
     };
 
     return (
-
         <RestaurantListContainer>
             <ul>
                 {restaurants.map((restaurant) => (
@@ -93,6 +103,5 @@ function RestaurantList({ restaurants, onOpenModal }) {
                 ))}
             </ul>
         </RestaurantListContainer>
-
     );
 }
